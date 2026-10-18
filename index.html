@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Missão Matemática: jogo educativo para alunos do 6º ano.">
+  <title>Missão Matemática 🚀</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <a href="#" class="logo">🚀 Missão Matemática</a>
+    <span class="serie">6º ano</span>
+  </header>
+
+  <main class="container">
+
+    <section id="tela-inicial" class="painel">
+      <div class="personagem">🧑‍🚀</div>
+      <p class="etiqueta">APRENDER É UMA AVENTURA!</p>
+
+      <h1>Desafio dos Exploradores</h1>
+
+      <p class="descricao">
+        Prepare-se para explorar o universo dos números!
+        Responda às perguntas e conquiste suas estrelas.
+      </p>
+
+      <div class="instrucoes">
+        <p>🧠 Responda a 10 perguntas matemáticas.</p>
+        <p>⭐ Ganhe 10 pontos por resposta correta.</p>
+        <p>🏆 Alcance até 100 pontos!</p>
+      </div>
+
+      <button id="botao-iniciar" class="botao principal">
+        Começar aventura 🚀
+      </button>
+    </section>
+
+    <section id="tela-jogo" class="painel escondido"
+      aria-labelledby="pergunta">
+
+      <div class="informacoes">
+        <span id="progresso">Pergunta 1 de 10</span>
+        <span id="pontuacao">⭐ 0 pontos</span>
+      </div>
+
+      <div class="barra-progresso"
+        id="barra-progresso"
+        role="progressbar"
+        aria-label="Progresso do jogo"
+        aria-valuemin="0"
+        aria-valuemax="10"
+        aria-valuenow="0">
+        <div id="barra-preenchida"></div>
+      </div>
+
+      <p id="categoria" class="etiqueta">MATEMÁTICA</p>
+
+      <h2 id="pergunta">Quanto é 5 + 3?</h2>
+
+      <div id="opcoes" class="opcoes"></div>
+
+      <p id="feedback" class="feedback" aria-live="polite">
+        Escolha uma resposta!
+      </p>
+
+      <button id="botao-proxima"
+        class="botao principal escondido">
+        Próxima pergunta ➜
+      </button>
+    </section>
+
+    <section id="tela-final" class="painel escondido"
+      aria-labelledby="titulo-final">
+
+      <div id="emoji-final" class="personagem">🏆</div>
+
+      <p class="etiqueta">MISSÃO CONCLUÍDA!</p>
+
+      <h2 id="titulo-final">Parabéns, explorador!</h2>
+
+      <p id="mensagem-final" class="descricao">
+        Você terminou sua aventura matemática!
+      </p>
+
+      <div class="resultado">
+        <span>Sua pontuação</span>
+        <strong id="pontuacao-final">0 / 100</strong>
+        <span id="acertos-final">0 de 10 acertos</span>
+      </div>
+
+      <button id="botao-reiniciar" class="botao principal">
+        Jogar novamente 🔄
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>💜 Aprender brincando é muito melhor!</p>
+    <p>Projeto educativo de Matemática · 6º ano</p>
+  </footer>
+
+</body>
+</html>
