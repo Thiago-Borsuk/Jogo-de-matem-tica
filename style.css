@@ -21,9 +21,18 @@ body {
   flex-direction: column;
   font-family: "Trebuchet MS", Arial, sans-serif;
   color: var(--texto);
+
   background:
-    radial-gradient(circle at 10% 15%, #ffe9a6 0 45px, transparent 46px),
-    radial-gradient(circle at 92% 35%, #d9ceff 0 65px, transparent 66px),
+    radial-gradient(
+      circle at 10% 15%,
+      #ffe9a6 0 45px,
+      transparent 46px
+    ),
+    radial-gradient(
+      circle at 92% 35%,
+      #d9ceff 0 65px,
+      transparent 66px
+    ),
     var(--fundo);
 }
 
@@ -81,8 +90,8 @@ button {
 }
 
 .personagem {
-  font-size: 4rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  margin-bottom: 5px;
 }
 
 .etiqueta {
@@ -94,42 +103,28 @@ button {
 
 h1, h2 {
   font-weight: 900;
-  line-height: 1.2;
-  margin: 12px 0;
+  line-height: 1.35;
+  margin: 18px 0;
 }
 
 h1 {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
 }
 
 h2 {
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
 }
 
-.descricao {
-  max-width: 440px;
-  margin: 16px auto 24px;
-  line-height: 1.7;
+.instrucao {
   color: #625c78;
-}
-
-.instrucoes {
-  margin: 22px 0;
-  padding: 16px 20px;
-  background: #f8f6ff;
-  border-radius: 18px;
-  text-align: left;
-  line-height: 1.5;
-}
-
-.instrucoes p {
-  margin: 8px 0;
+  margin: 12px 0 20px;
 }
 
 .informacoes {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  margin-top: 20px;
   font-size: 0.9rem;
   font-weight: bold;
 }
@@ -152,7 +147,6 @@ h2 {
 
 #pergunta {
   margin: 18px 0 24px;
-  line-height: 1.5;
 }
 
 .opcoes {
@@ -178,6 +172,11 @@ h2 {
   border-color: var(--roxo);
   background: #f0eaff;
   transform: translateY(-2px);
+}
+
+.opcao:focus-visible {
+  outline: 3px solid #ffb900;
+  outline-offset: 3px;
 }
 
 .opcao:disabled {
@@ -235,7 +234,7 @@ h2 {
   transform: translateY(-2px);
 }
 
-button:focus-visible {
+.botao:focus-visible {
   outline: 4px solid #ffb900;
   outline-offset: 3px;
 }

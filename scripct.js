@@ -1,6 +1,7 @@
 
 "use strict";
 
+// PERGUNTAS DO JOGO
 const perguntas = [
   {
     categoria: "ADIÇÃO",
@@ -74,12 +75,10 @@ const perguntas = [
   }
 ];
 
-// Elementos da página
-const telaInicial = document.getElementById("tela-inicial");
+// ELEMENTOS HTML
 const telaJogo = document.getElementById("tela-jogo");
 const telaFinal = document.getElementById("tela-final");
 
-const botaoIniciar = document.getElementById("botao-iniciar");
 const botaoProxima = document.getElementById("botao-proxima");
 const botaoReiniciar = document.getElementById("botao-reiniciar");
 
@@ -99,22 +98,26 @@ const mensagemFinal = document.getElementById("mensagem-final");
 const emojiFinal = document.getElementById("emoji-final");
 const tituloFinal = document.getElementById("titulo-final");
 
-// Estado do jogo
+// ESTADO DO JOGO
 let indiceAtual = 0;
 let pontos = 0;
 let acertos = 0;
 let respondida = false;
 
-// Mostra somente a tela solicitada
+// MOSTRAR UMA TELA
 function mostrarTela(telaSelecionada) {
-  [telaInicial, telaJogo, telaFinal].forEach((tela) => {
-    tela.classList.add("escondido");
-  });
+  telaJogo.classList.add("escondido");
+  telaFinal.classList.add("escondido");
 
   telaSelecionada.classList.remove("escondido");
 }
 
-// Começa ou reinicia o jogo
+// ATUALIZAR A PONTUAÇÃO
+function atualizarPontuacao() {
+  pontuacao.textContent = `⭐ ${pontos} pontos`;
+}
+
+// INICIAR OU REINICIAR O JOGO
 function iniciarJogo() {
   indiceAtual = 0;
   pontos = 0;
@@ -126,12 +129,7 @@ function iniciarJogo() {
   mostrarPergunta();
 }
 
-// Atualiza a pontuação no topo
-function atualizarPontuacao() {
-  pontuacao.textContent = `⭐ ${pontos} pontos`;
-}
-
-// Carrega a pergunta atual
+// MOSTRAR A PERGUNTA ATUAL
 function mostrarPergunta() {
   respondida = false;
 
@@ -169,7 +167,7 @@ function mostrarPergunta() {
   });
 }
 
-// Verifica se a resposta escolhida está correta
+// VERIFICAR A RESPOSTA
 function verificarResposta(indiceEscolhido) {
   if (respondida) {
     return;
@@ -179,7 +177,6 @@ function verificarResposta(indiceEscolhido) {
 
   const atual = perguntas[indiceAtual];
   const botoes = opcoes.querySelectorAll(".opcao");
-
   const acertou = indiceEscolhido === atual.correta;
 
   botoes.forEach((botao, indice) => {
@@ -212,15 +209,16 @@ function verificarResposta(indiceEscolhido) {
 
   barraProgresso.setAttribute("aria-valuenow", indiceAtual + 1);
 
-  botaoProxima.textContent =
-    indiceAtual === perguntas.length - 1
-      ? "Ver resultado 🏆"
-      : "Próxima pergunta ➜";
+  if (indiceAtual === perguntas.length - 1) {
+    botaoProxima.textContent = "Ver resultado 🏆";
+  } else {
+    botaoProxima.textContent = "Próxima pergunta ➜";
+  }
 
   botaoProxima.classList.remove("escondido");
 }
 
-// Avança para a próxima pergunta
+// AVANÇAR PARA A PRÓXIMA PERGUNTA
 function proximaPergunta() {
   if (!respondida) {
     return;
@@ -235,11 +233,12 @@ function proximaPergunta() {
   }
 }
 
-// Apresenta o resultado final
+// MOSTRAR O RESULTADO
 function finalizarJogo() {
   mostrarTela(telaFinal);
 
   pontuacaoFinal.textContent = `${pontos} / 100`;
+
   acertosFinal.textContent =
     `${acertos} de ${perguntas.length} respostas corretas`;
 
@@ -266,7 +265,9 @@ function finalizarJogo() {
   }
 }
 
-// Eventos dos botões principais
-botaoIniciar.addEventListener("click", iniciarJogo);
+// EVENTOS DOS BOTÕES
 botaoProxima.addEventListener("click", proximaPergunta);
 botaoReiniciar.addEventListener("click", iniciarJogo);
+
+// COMEÇAR AUTOMATICAMENTE NA PRIMEIRA PERGUNTA
+iniciarJogo();
