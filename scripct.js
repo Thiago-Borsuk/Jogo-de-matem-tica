@@ -1,3 +1,6 @@
+
+"use strict";
+
 const perguntas = [
   {
     categoria: "ADIÇÃO",
@@ -60,7 +63,7 @@ const perguntas = [
     pergunta: "Complete a sequência: 5, 10, 15, 20, ...",
     opcoes: ["22", "24", "30", "25"],
     correta: 3,
-    explicacao: "A sequência aumenta de 5 em 5. O próximo é 25."
+    explicacao: "A sequência aumenta de 5 em 5. O próximo número é 25."
   },
   {
     categoria: "PROBLEMAS",
@@ -71,6 +74,7 @@ const perguntas = [
   }
 ];
 
+// Elementos da página
 const telaInicial = document.getElementById("tela-inicial");
 const telaJogo = document.getElementById("tela-jogo");
 const telaFinal = document.getElementById("tela-final");
@@ -83,6 +87,7 @@ const progresso = document.getElementById("progresso");
 const pontuacao = document.getElementById("pontuacao");
 const barraProgresso = document.getElementById("barra-progresso");
 const barraPreenchida = document.getElementById("barra-preenchida");
+
 const categoria = document.getElementById("categoria");
 const pergunta = document.getElementById("pergunta");
 const opcoes = document.getElementById("opcoes");
@@ -94,11 +99,13 @@ const mensagemFinal = document.getElementById("mensagem-final");
 const emojiFinal = document.getElementById("emoji-final");
 const tituloFinal = document.getElementById("titulo-final");
 
+// Estado do jogo
 let indiceAtual = 0;
 let pontos = 0;
 let acertos = 0;
 let respondida = false;
 
+// Mostra somente a tela solicitada
 function mostrarTela(telaSelecionada) {
   [telaInicial, telaJogo, telaFinal].forEach((tela) => {
     tela.classList.add("escondido");
@@ -107,6 +114,7 @@ function mostrarTela(telaSelecionada) {
   telaSelecionada.classList.remove("escondido");
 }
 
+// Começa ou reinicia o jogo
 function iniciarJogo() {
   indiceAtual = 0;
   pontos = 0;
@@ -118,10 +126,12 @@ function iniciarJogo() {
   mostrarPergunta();
 }
 
+// Atualiza a pontuação no topo
 function atualizarPontuacao() {
   pontuacao.textContent = `⭐ ${pontos} pontos`;
 }
 
+// Carrega a pergunta atual
 function mostrarPergunta() {
   respondida = false;
 
@@ -151,7 +161,7 @@ function mostrarPergunta() {
     botao.className = "opcao";
     botao.textContent = texto;
 
-    botao.addEventListener("click", () => {
+    botao.addEventListener("click", function () {
       verificarResposta(indice);
     });
 
@@ -159,13 +169,17 @@ function mostrarPergunta() {
   });
 }
 
+// Verifica se a resposta escolhida está correta
 function verificarResposta(indiceEscolhido) {
-  if (respondida) return;
+  if (respondida) {
+    return;
+  }
 
   respondida = true;
 
   const atual = perguntas[indiceAtual];
   const botoes = opcoes.querySelectorAll(".opcao");
+
   const acertou = indiceEscolhido === atual.correta;
 
   botoes.forEach((botao, indice) => {
@@ -173,7 +187,9 @@ function verificarResposta(indiceEscolhido) {
 
     if (indice === atual.correta) {
       botao.classList.add("correta");
-    } else if (indice === indiceEscolhido) {
+    }
+
+    if (indice === indiceEscolhido && !acertou) {
       botao.classList.add("errada");
     }
   });
@@ -185,7 +201,7 @@ function verificarResposta(indiceEscolhido) {
     feedback.textContent = `🎉 Muito bem! ${atual.explicacao}`;
     feedback.className = "feedback acerto";
   } else {
-    feedback.textContent = `💡 Continue aprendendo! ${atual.explicacao}`;
+    feedback.textContent = `💡 Não foi dessa vez! ${atual.explicacao}`;
     feedback.className = "feedback erro";
   }
 
@@ -204,10 +220,13 @@ function verificarResposta(indiceEscolhido) {
   botaoProxima.classList.remove("escondido");
 }
 
+// Avança para a próxima pergunta
 function proximaPergunta() {
-  if (!respondida) return;
+  if (!respondida) {
+    return;
+  }
 
-  indiceAtual++;
+  indiceAtual += 1;
 
   if (indiceAtual < perguntas.length) {
     mostrarPergunta();
@@ -216,6 +235,7 @@ function proximaPergunta() {
   }
 }
 
+// Apresenta o resultado final
 function finalizarJogo() {
   mostrarTela(telaFinal);
 
@@ -246,6 +266,7 @@ function finalizarJogo() {
   }
 }
 
+// Eventos dos botões principais
 botaoIniciar.addEventListener("click", iniciarJogo);
 botaoProxima.addEventListener("click", proximaPergunta);
 botaoReiniciar.addEventListener("click", iniciarJogo);

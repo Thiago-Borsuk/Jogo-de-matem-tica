@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Missão Matemática: jogo educativo para alunos do 6º ano.">
+  <meta name="description" content="Jogo educativo de Matemática para alunos do 6º ano.">
   <title>Missão Matemática 🚀</title>
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -18,10 +19,11 @@
 
   <main class="container">
 
+    <!-- TELA INICIAL -->
     <section id="tela-inicial" class="painel">
       <div class="personagem">🧑‍🚀</div>
-      <p class="etiqueta">APRENDER É UMA AVENTURA!</p>
 
+      <p class="etiqueta">APRENDER É UMA AVENTURA!</p>
       <h1>Desafio dos Exploradores</h1>
 
       <p class="descricao">
@@ -30,37 +32,39 @@
       </p>
 
       <div class="instrucoes">
-        <p>🧠 Responda a 10 perguntas matemáticas.</p>
+        <p>🧠 Responda a 10 perguntas.</p>
         <p>⭐ Ganhe 10 pontos por resposta correta.</p>
-        <p>🏆 Alcance até 100 pontos!</p>
+        <p>🏆 Conquiste até 100 pontos!</p>
       </div>
 
-      <button id="botao-iniciar" class="botao principal">
+      <button type="button" id="botao-iniciar" class="botao principal">
         Começar aventura 🚀
       </button>
     </section>
 
-    <section id="tela-jogo" class="painel escondido"
-      aria-labelledby="pergunta">
+    <!-- TELA DO JOGO -->
+    <section id="tela-jogo" class="painel escondido">
 
       <div class="informacoes">
         <span id="progresso">Pergunta 1 de 10</span>
         <span id="pontuacao">⭐ 0 pontos</span>
       </div>
 
-      <div class="barra-progresso"
-        id="barra-progresso"
+      <div
+        class="barra-progresso"
         role="progressbar"
-        aria-label="Progresso do jogo"
+        aria-label="Progresso das perguntas"
         aria-valuemin="0"
         aria-valuemax="10"
-        aria-valuenow="0">
+        aria-valuenow="0"
+        id="barra-progresso"
+      >
         <div id="barra-preenchida"></div>
       </div>
 
       <p id="categoria" class="etiqueta">MATEMÁTICA</p>
 
-      <h2 id="pergunta">Quanto é 5 + 3?</h2>
+      <h2 id="pergunta">Pergunta do jogo</h2>
 
       <div id="opcoes" class="opcoes"></div>
 
@@ -68,19 +72,21 @@
         Escolha uma resposta!
       </p>
 
-      <button id="botao-proxima"
-        class="botao principal escondido">
+      <button
+        type="button"
+        id="botao-proxima"
+        class="botao principal escondido"
+      >
         Próxima pergunta ➜
       </button>
     </section>
 
-    <section id="tela-final" class="painel escondido"
-      aria-labelledby="titulo-final">
+    <!-- TELA FINAL -->
+    <section id="tela-final" class="painel escondido">
 
       <div id="emoji-final" class="personagem">🏆</div>
 
       <p class="etiqueta">MISSÃO CONCLUÍDA!</p>
-
       <h2 id="titulo-final">Parabéns, explorador!</h2>
 
       <p id="mensagem-final" class="descricao">
@@ -93,7 +99,11 @@
         <span id="acertos-final">0 de 10 acertos</span>
       </div>
 
-      <button id="botao-reiniciar" class="botao principal">
+      <button
+        type="button"
+        id="botao-reiniciar"
+        class="botao principal"
+      >
         Jogar novamente 🔄
       </button>
     </section>
